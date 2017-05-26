@@ -1,0 +1,1 @@
+require "cereals/version"
