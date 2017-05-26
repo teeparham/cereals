@@ -1,0 +1,40 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - "bin/*"
+
+Metrics/LineLength:
+  Max: 110
+
+Style/Documentation:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - "cereals.gemspec"
+    - "Gemfile"
+
+Lint/HandleExceptions:
+  Exclude:
+    - "test/test_helper.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "test/**/*"
+
+Style/EmptyMethod:
+  Exclude:
+    - "test/**/*"
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - "test/**/*"
