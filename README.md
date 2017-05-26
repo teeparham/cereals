@@ -1,5 +1,11 @@
 # Cereals
 
+[![Gem Version](https://badge.fury.io/rb/cereals.svg)][gem]
+[![Build Status](https://travis-ci.org/teeparham/cereals.svg?branch=master)][build]
+
+[gem]: http://rubygems.org/gems/cereals
+[build]: https://travis-ci.org/teeparham/cereals
+
 Cereals makes it easy to serialize ruby objects to JSON.
 Cereals provides serializer classes for single objects and collections.
 
