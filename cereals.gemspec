@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "JSON serializer classes"
   spec.description   = "JSON serializer classes"
-  spec.homepage      = "https://github/com/teeparham/cereals"
+  spec.homepage      = "https://github.com/teeparham/cereals"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*.rb", "LICENSE.txt", "README.md"]
