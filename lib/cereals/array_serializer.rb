@@ -9,7 +9,8 @@ module Cereals
       @root = root
     end
 
-    def to_json
+    # accept arguments to work with rails rendering
+    def to_json(_ = nil)
       { @root => wrap_objects.as_json(root: false) }.to_json
     end
 
