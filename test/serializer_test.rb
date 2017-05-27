@@ -10,6 +10,10 @@ class SerializerTest < Minitest::Spec
     assert_equal %({"doge":#{json(doge)}}), serializer.to_json
   end
 
+  it "accepts options" do
+    assert_equal %({"doge":#{json(doge)}}), serializer.to_json(status: :ok)
+  end
+
   it "parses" do
     assert_kind_of Hash, JSON.parse(serializer.to_json)
   end

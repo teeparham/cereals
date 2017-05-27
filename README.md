@@ -43,18 +43,20 @@ class UserSerializer < Cereals::Serializer
 end
 ```
 
+Rails renderers take care of calling `#to_json` when you render json.
+
 A JSON API might look like this:
 
 ```ruby
 class UsersController
   def show
     user = User.find(params[:id])
-    render json: user.to_json
+    render json: user
   end
 
   def index
     users = User.all
-    render json: ArraySerializer.new(users, "users").to_json
+    render json: ArraySerializer.new(users, "users")
   end
 end
 ```
