@@ -30,6 +30,9 @@ class ApplicationRecord
 end
 ```
 
+Note: the above `include` will override `#to_json` for all models, so if you don't
+want that to happen, do something else.
+
 Create serializer classes with names corresponding to your models.
 Implement `#to_hash` on each serializer.
 
@@ -44,6 +47,19 @@ end
 ```
 
 Rails renderers take care of calling `#to_json` when you render json.
+When you include the `Cereals::Base` module in an object that is
+rendered, the `to_json` call made by rails will instantiate a serializer
+corresponding to the object and call `to_json` on the serializer.
+
+For example, when you see `render json: user`, here is what happens:
+
+* `render` calls `to_json` on `user`.
+* `user#to_json` is defined in `Cereals::Base`.
+* Cereals creates a new `UserSerializer`, which wraps `user`.
+* `Cereals::Base#to_json` returns the serializer object, which receives
+the `to_json` call from rails.
+* `UserSerializer#to_json` is defined in the base `Cereals::Serializer` class,
+which calls `#to_hash` in `UserSerializer`.
 
 A JSON API might look like this:
 
@@ -56,7 +72,7 @@ class UsersController
 
   def index
     users = User.all
-    render json: ArraySerializer.new(users, "users")
+    render json: Cereals::ArraySerializer.new(users, "users")
   end
 end
 ```
@@ -118,7 +134,6 @@ class UserSerializer
   end
 end
 ```
-
 
 ## Development
 
